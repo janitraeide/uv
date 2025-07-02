@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="codegrid" />
     <title>Contact Us | Urge Visionary</title>
-    <link rel="icon" href="./public/images/global/site-icon.png" />
-
+    <link rel="icon" href="../public/images/global/site-icon.png" />
+    
     <!-- Performance optimizations: Preload critical resources -->
-    <link rel="preload" href="./css/globals.css" as="style" />
-    <link rel="preload" href="./css/contact.css" as="style" />
-    <link rel="preload" href="./css/fonts/NeueMontreal-Regular.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="../css/globals.css" as="style" />
+    <link rel="preload" href="../css/contact.css" as="style" />
+    <link rel="preload" href="../css/fonts/NeueMontreal-Regular.otf" as="font" type="font/otf" crossorigin />
 
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="https://unpkg.com" />
 
-    <link rel="stylesheet" href="./css/globals.css" />
-    <link rel="stylesheet" href="./css/contact.css" />
+    <link rel="stylesheet" href="../css/globals.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -38,7 +38,13 @@
         </div>
       </div>
 
-     
+      <!-- Navigation -->
+      <nav class="top-nav">
+        <div class="nav-content">
+          <a href="../index.html" class="nav-logo">URGE VISIONARY</a>
+          <a href="../index.html" class="nav-back">← Back to Home</a>
+        </div>
+      </nav>
 
       <!-- Contact Hero Section -->
       <section class="contact-hero">
@@ -48,7 +54,7 @@
             contact us / contact us / contact us / contact us / contact us
           </span>
         </div>
-
+        
         <div class="contact-hero-content">
           <div class="hero-decoration">
             <div class="floating-element"></div>
@@ -57,7 +63,7 @@
           </div>
           <h1 data-split="lines" class="contact-heading">GET IN TOUCH</h1>
           <p data-split="lines" class="contact-subtitle">
-            Let's unlock together the next level of possibilities!
+            Let's unlock together the next level of possibilities! 
             Ready to transform your vision into reality? Reach out.
           </p>
           <div class="hero-stats">
@@ -82,8 +88,8 @@
         <div class="contact-details col">
           <div class="contact-intro">
             <p>
-              We believe every great project starts with a conversation.
-              Whether you're looking to build something extraordinary or
+              We believe every great project starts with a conversation. 
+              Whether you're looking to build something extraordinary or 
               need creative solutions that push boundaries, we're here to help.
             </p>
           </div>
@@ -93,13 +99,13 @@
               <h3>Get in touch</h3>
               <span>info@urgevisionary.com</span>
             </div>
-            <!-- <div class="address item">
+            <div class="address item">
               <h3>location</h3>
               <span>DUBAI - UAE</span>
-            </div> -->
+            </div>
           </div>
 
-          <!-- <div class="social-media item">
+          <div class="social-media item">
             <h3>Follow us</h3>
             <div class="social-links">
               <a href="#" class="social-link">INSTAGRAM</a>
@@ -107,9 +113,9 @@
               <a href="#" class="social-link">LINKEDIN</a>
               <a href="#" class="social-link">BEHANCE</a>
             </div>
-          </div> -->
+          </div>
         </div>
-
+        
         <div class="contact-form col">
           <div class="form-wrapper">
             <div class="form-row">
@@ -132,7 +138,7 @@
               <a class="btn-cta" href="#" onclick="submitForm(event)">
                 <span class="btn-cta-border"></span>
                 <span class="btn-cta-ripple"><span></span></span>
-                <span class="btn-cta-title" style="text-align: center;"><span data-text="SEND MESSAGE">SEND MESSAGE</span></span>
+                <span class="btn-cta-title"><span data-text="SEND MESSAGE">SEND MESSAGE</span></span>
               </a>
             </div>
           </div>
@@ -141,8 +147,8 @@
     </div>
 
     <!-- Scripts -->
-    <script type="module" src="./js/lenis-scroll.js"></script>
-    <script type="module" src="./js/text-line.js"></script>
+    <script type="module" src="../js/lenis-scroll.js"></script>
+    <script type="module" src="../js/text-line.js"></script>
     <script>
       function submitForm(event) {
         event.preventDefault();
