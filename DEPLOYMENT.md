@@ -4,10 +4,11 @@
 
 The contact page was showing 404 error on Vercel. Here are the fixes applied:
 
-### 1. Created `vercel.json` Configuration
-- Added proper routing for `/contact` to `/contact.html`
-- Added static file serving configuration
-- Added proper headers for caching
+### 1. Fixed `vercel.json` Configuration
+- **FIXED:** Removed conflicting `routes` property
+- Used `rewrites` instead of `routes` for `/contact` to `/contact.html`
+- Added `cleanUrls: true` and `trailingSlash: false`
+- **Issue:** Vercel doesn't allow `routes` with `rewrites`, `redirects`, `headers`, `cleanUrls` or `trailingSlash`
 
 ### 2. Fixed File Paths
 - Changed all relative paths to use `./` prefix
@@ -58,6 +59,29 @@ The contact page was showing 404 error on Vercel. Here are the fixes applied:
 ├── public/               # Static assets
 ├── vercel.json          # Vercel configuration
 └── .gitignore           # Git ignore file
+```
+
+## Fixed Vercel Error
+
+**Error:** `If 'rewrites', 'redirects', 'headers', 'cleanUrls' or 'trailingSlash' are used, then 'routes' cannot be present.`
+
+**Solution:**
+- Removed `routes` property from `vercel.json`
+- Used `rewrites` instead for routing
+- Simplified configuration to avoid conflicts
+
+**New vercel.json:**
+```json
+{
+  "rewrites": [
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
 ```
 
 ## Troubleshooting
