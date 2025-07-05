@@ -3,7 +3,7 @@
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/terms-and-conditions", "destination": "/terms-and-conditions.html" },
-    { "source": "/privacy-policy", "destination": "/privacy-policy.html" }
+    { "source": "/terms_and_conditions", "destination": "/terms-and-conditions.html" },
+    { "source": "/privacy_policy", "destination": "/privacy-policy.html" }
   ]
 }
