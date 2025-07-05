@@ -2,7 +2,6 @@ import gsap from "gsap";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
-import Lenis from "lenis";
 import PerformanceMonitor from "./performance-monitor.js";
 
 // Performance optimized main initialization
@@ -11,7 +10,6 @@ class PerformanceOptimizedApp {
     this.isInitialized = false;
     this.scrollTriggerInstances = [];
     this.textSplitters = [];
-    this.lenis = null;
     this.isMobile = window.innerWidth <= 900;
     this.resizeTimeout = null;
     
@@ -34,52 +32,13 @@ class PerformanceOptimizedApp {
     gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
     
     // Initialize all components
-    this.initLenisScroll();
     this.initAnimations();
     this.initEventListeners();
     
     this.isInitialized = true;
   }
 
-  initLenisScroll() {
-    const scrollSettings = this.isMobile ? {
-      duration: 1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: "vertical",
-      gestureDirection: "vertical",
-      smooth: true,
-      smoothTouch: true,
-      touchMultiplier: 1.5,
-      infinite: false,
-      lerp: 0.05,
-      wheelMultiplier: 1,
-      orientation: "vertical",
-      smoothWheel: true,
-      syncTouch: true,
-    } : {
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: "vertical",
-      gestureDirection: "vertical",
-      smooth: true,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
-      lerp: 0.1,
-      wheelMultiplier: 1,
-      orientation: "vertical",
-      smoothWheel: true,
-      syncTouch: true,
-    };
-
-    this.lenis = new Lenis(scrollSettings);
-    this.lenis.on("scroll", ScrollTrigger.update);
-    
-    gsap.ticker.add((time) => {
-      this.lenis.raf(time * 1000);
-    });
-    gsap.ticker.lagSmoothing(0);
-  }
+ 
 
   initAnimations() {
     // Clear previous instances for performance
@@ -270,7 +229,6 @@ class PerformanceOptimizedApp {
 
       // Reinitialize if mobile state changed
       if (wasMobile !== this.isMobile) {
-        this.reinitializeLenis();
       }
       
       // Refresh animations
@@ -278,12 +236,6 @@ class PerformanceOptimizedApp {
     }, 250);
   }
 
-  reinitializeLenis() {
-    if (this.lenis) {
-      this.lenis.destroy();
-    }
-    this.initLenisScroll();
-  }
 
   cleanup() {
     // Clean up ScrollTrigger instances
@@ -296,10 +248,7 @@ class PerformanceOptimizedApp {
   }
 
   destroy() {
-    this.cleanup();
-    if (this.lenis) {
-      this.lenis.destroy();
-    }
+ 
     window.removeEventListener("resize", this.handleResize);
     clearTimeout(this.resizeTimeout);
   }

@@ -2,29 +2,28 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
 document.addEventListener("DOMContentLoaded", () => {
   let isMobile = window.innerWidth <= 900;
 
   const getScrollSettings = (isMobile) =>
     isMobile
       ? {
-          duration: 1,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smooth: false,               // ❌ Disable smooth scroll on mobile
+          duration: 1.2,
           direction: "vertical",
           gestureDirection: "vertical",
-          smooth: true,
-          smoothTouch: false,        // ✅ Native feel on mobile
-          touchMultiplier: 0.6,      // ✅ Less aggressive swipe
+          smoothTouch: false,
+          touchMultiplier: 0.3,
           infinite: false,
-          lerp: 0.12,                // ✅ Balanced smoothness
-          wheelMultiplier: 1,
+          lerp: 0.1,
           orientation: "vertical",
-          smoothWheel: true,
+          smoothWheel: false,
           syncTouch: true,
         }
       : {
           duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           direction: "vertical",
           gestureDirection: "vertical",
           smooth: true,
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
           touchMultiplier: 2,
           infinite: false,
           lerp: 0.1,
-          wheelMultiplier: 1,
+          wheelMultiplier: 0.5,
           orientation: "vertical",
           smoothWheel: true,
           syncTouch: true,
