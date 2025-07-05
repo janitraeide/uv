@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/contact-us",
+      "destination": "/contact.html"
+    }
+  ]
+}
